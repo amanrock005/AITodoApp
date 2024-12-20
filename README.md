@@ -29,7 +29,7 @@ Styled using **Tailwind CSS** for a clean, responsive UI.
 - **Backend**: Node.js + Express.js
 - **Database**: MongoDB (Mongoose)
 - **AI Integration**: OpenAI's ChatGPT API
-- **Deployment**: *(Optional: Add details if deployed on Heroku/Vercel/etc.)*
+
 
 ---
 
