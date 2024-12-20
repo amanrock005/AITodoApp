@@ -49,4 +49,7 @@ Styled using **Tailwind CSS** for a clean, responsive UI.
 
 - **PORT**:  
 - **MONGO_URI**:  
-- **OPENAI_API_KEY**:  
+- **OPENAI_API_KEY**:
+
+## Live Link 
+- **https://aitodoapp.onrender.com/**
