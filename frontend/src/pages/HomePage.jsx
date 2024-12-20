@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import { axiosInstance } from "../lib/axiosInstance";
 import { Link } from "react-router-dom";
 import { Bot, ClipboardPenLine, Trash2 } from "lucide-react";
 import AiChatBot from "../components/AiChatBot";
@@ -12,9 +12,7 @@ export default function HomePage() {
 
   const fetchTodos = async () => {
     try {
-      const response = await axios.get(
-        "http://localhost:5000/api/todos/alltodos"
-      );
+      const response = await axiosInstance.get("/todos/alltodos");
       setTodos(response.data.todos);
       setLoading(false);
     } catch (err) {
@@ -30,12 +28,9 @@ export default function HomePage() {
 
   const handleDelete = async (todoId) => {
     try {
-      const response = await axios.delete(
-        "http://localhost:5000/api/todos/deletetodo",
-        {
-          data: { id: todoId },
-        }
-      );
+      const response = await axiosInstance.delete("/todos/deletetodo", {
+        data: { id: todoId },
+      });
 
       alert(response.data.message || "Todo deleted successfully");
       fetchTodos();

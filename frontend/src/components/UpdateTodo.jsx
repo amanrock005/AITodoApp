@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
+import { axiosInstance } from "../lib/axiosInstance";
 
 export default function UpdateTodo() {
   const { id } = useParams();
@@ -17,9 +17,7 @@ export default function UpdateTodo() {
   useEffect(() => {
     const fetchTodo = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:5000/api/todos/singletodo/${id}`
-        );
+        const response = await axiosInstance.get(`/todos/singletodo/${id}`);
 
         const dateObj = new Date(response.data.dueDate);
 
@@ -45,8 +43,8 @@ export default function UpdateTodo() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.put(
-        `http://localhost:5000/api/todos/updatetodo/${id}`,
+      const response = await axiosInstance.put(
+        `/todos/updatetodo/${id}`,
         formData
       );
       console.log(response);

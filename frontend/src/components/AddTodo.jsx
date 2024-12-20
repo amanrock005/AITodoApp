@@ -1,4 +1,4 @@
-import axios from "axios";
+import { axiosInstance } from "../lib/axiosInstance";
 import { useState } from "react";
 
 export default function AddTodo() {
@@ -19,10 +19,7 @@ export default function AddTodo() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/todos/addtodo",
-        formData
-      );
+      const response = await axiosInstance.post("/todos/addtodo", formData);
       console.log("Response: ", response); // Log response
       setMessage(response.data.message);
       setFormData({

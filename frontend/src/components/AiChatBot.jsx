@@ -1,6 +1,6 @@
 import { X } from "lucide-react";
 import { useState } from "react";
-import axios from "axios";
+import { axiosInstance } from "../lib/axiosInstance";
 
 export default function AiChatBot({ onClose }) {
   const [userInput, setUserInput] = useState("");
@@ -14,7 +14,7 @@ export default function AiChatBot({ onClose }) {
       setLoading(true);
       setBotResponse("");
 
-      const response = await axios.post("http://localhost:5000/api/chat", {
+      const response = await axiosInstance.post("/chat", {
         userInput: userInput,
       });
 
